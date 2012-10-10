@@ -2,14 +2,18 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace ProxySwitcherLib
+namespace ProxySwitcher.Lib
 {
     public interface IBrowserProxy
     {
-        public ProxyStatus Status
+        ProxyStatus Status
         {
             get;
             set;
+        }
+        String Name
+        {
+            get;
         }
 
     }

@@ -1,4 +1,4 @@
-﻿namespace ProxySwitcherLib
+﻿namespace ProxySwitcher.Lib
 {
     public enum ProxyStatus
     {
