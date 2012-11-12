@@ -1,0 +1,6 @@
+Simple tool to set a proxy on or off for both Windows (i.e. Internet Explorer) and Mozilla Firefox.
+Mozilla Firefox must not be running for this to take effect.
+Behavior of Internet Explorer is slightly random, it is better if it is also not running.
+
+License: MIT, see LICENSE file.
+(c) Copyright: 2012 Guillaume Mouron.
