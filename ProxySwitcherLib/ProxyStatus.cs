@@ -3,7 +3,8 @@
     public enum ProxyStatus
     {
         On,
-        Off
+        Off,
+        Unknown
     }
 
 }

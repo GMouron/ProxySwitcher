@@ -36,8 +36,10 @@ namespace ProxySwitcher.CLI
 
         private static void printProxyStatus()
         {
-            IBrowserProxy proxy = new IEProxy();
-            Console.WriteLine(proxy.Name + " proxy is " + proxy.Status);
+            foreach (IBrowserProxy proxy in getProxies())
+            {
+                Console.WriteLine(proxy.Name + " proxy is " + proxy.Status);
+            }
         }
 
         private static void printHelp()
@@ -53,8 +55,10 @@ namespace ProxySwitcher.CLI
                 try
                 {
                     ProxyStatus status = (ProxyStatus)Enum.Parse(typeof(ProxyStatus), args[1], true);
-                    IBrowserProxy proxy = new IEProxy();
-                    proxy.Status = status;
+                    foreach (IBrowserProxy proxy in getProxies())
+                    {
+                        proxy.Status = status;
+                    }
                     printProxyStatus();
                 }
                 catch (Exception e)
@@ -67,6 +71,11 @@ namespace ProxySwitcher.CLI
             {
                 printHelp();
             }
+        }
+
+        private static IBrowserProxy[] getProxies()
+        {
+            return new IBrowserProxy[]{new IEProxy(), new FirefoxProxy()};
         }
     }
 

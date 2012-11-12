@@ -15,14 +15,14 @@ namespace ProxySwitcher.Lib
             get
             {
                 RegistryKey key = Registry.CurrentUser.OpenSubKey(INTERNET_SETTINGS_KEY);
-                
-                if (1 == (int)key.GetValue(PROXY_ENABLE_VALUE,0,RegistryValueOptions.None))
-                {
-                    return ProxyStatus.On;
-                } 
-                else 
-                {
+
+                switch((int)key.GetValue(PROXY_ENABLE_VALUE, -1, RegistryValueOptions.None)) {
+                    case 0:
                     return ProxyStatus.Off;
+                    case 1:
+                    return ProxyStatus.On;
+                    default:
+                        return ProxyStatus.Unknown;
                 }
  
             }
@@ -39,7 +39,7 @@ namespace ProxySwitcher.Lib
                         key.SetValue(IEProxy.PROXY_ENABLE_VALUE, 0, RegistryValueKind.DWord);
                         break;
                     default:
-                        throw new NotSupportedException();
+                        throw new NotSupportedException("You can't set proxy value to " + value);
                 }
             }
         }
